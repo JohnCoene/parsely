@@ -4,9 +4,9 @@
 \alias{ly_analytics}
 \title{Get analytics}
 \usage{
-ly_analytics(token, type = "posts", start = Sys.Date() - 7,
-  end = Sys.Date(), pub.start = NULL, pub.end = NULL, section = NULL,
-  author = NULL, tag = NULL, sort = "views", n = 100, verbose = FALSE)
+ly_analytics(token, type = "posts", start = NULL, end = NULL,
+  pub.start = NULL, pub.end = NULL, section = NULL, author = NULL,
+  tag = NULL, sort = "views", n = 100, verbose = FALSE)
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}
@@ -15,10 +15,9 @@ ly_analytics(token, type = "posts", start = Sys.Date() - 7,
 \code{referrers}.}
 
 \item{start}{start of date range to consider traffic from,
-limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.}
+limited to most recent 90 days.}
 
-\item{end}{end of date range to consider traffic from.
-Defaults to \code{Sys.Date()-7}.}
+\item{end}{end of date range to consider traffic from.}
 
 \item{pub.start}{publication filter start date, \code{posts} only.}
 
@@ -48,7 +47,7 @@ token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 posts <- ly_analytics(token)
 gender <- ly_analytics(token, verbose = T, tag = "gender-parity",
-  sort = "mobile_views", n = 1000)
+  sort = "engaged_minutes", n = 1000)
 }
 
 }

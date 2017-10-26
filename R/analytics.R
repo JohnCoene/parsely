@@ -8,9 +8,8 @@
 #' @param type one of \code{posts}, \code{authors}, \code{sections}, \code{tags},
 #' \code{referrers}.
 #' @param start start of date range to consider traffic from,
-#'  limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.
+#'  limited to most recent 90 days.
 #' @param end end of date range to consider traffic from.
-#'  Defaults to \code{Sys.Date()-7}.
 #' @param pub.start publication filter start date, \code{posts} only.
 #' @param pub.end publication filter end date, \code{posts} only.
 #' @param section filter the current top posts by a specific section, \code{posts} only.
@@ -27,12 +26,12 @@
 #'
 #' posts <- ly_analytics(token)
 #' gender <- ly_analytics(token, verbose = T, tag = "gender-parity",
-#'   sort = "mobile_views", n = 1000)
+#'   sort = "engaged_minutes", n = 1000)
 #' }
 #'
 #' @export
-ly_analytics <- function(token, type = "posts", start = Sys.Date()-7,
-                         end = Sys.Date(), pub.start = NULL, pub.end = NULL,
+ly_analytics <- function(token, type = "posts", start = NULL,
+                         end = NULL, pub.start = NULL, pub.end = NULL,
                          section = NULL, author = NULL, tag = NULL, sort = "views",
                          n = 100, verbose = FALSE){
 
@@ -59,6 +58,7 @@ ly_analytics <- function(token, type = "posts", start = Sys.Date()-7,
                     pub_date_end = pub.end,
                     section = section,
                     author = author,
+                    sort = sort,
                     tag = tag,
                     limit = 100,
                     page = 1)
@@ -120,7 +120,8 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
                     secret = token[["secret"]],
                     url = url,
                     start = start,
-                    end = end)
+                    end = end,
+                    sort = "engaged_minutes")
   uri <- httr::build_url(uri)
 
   # call API

@@ -5,8 +5,8 @@
 \title{Get referrers}
 \usage{
 ly_referrers(token, referrer.type = "social", section = NULL, tag = NULL,
-  domain = NULL, start = Sys.Date() - 7, end = Sys.Date(),
-  pub.start = NULL, pub.end = NULL, n = 100, verbose = FALSE)
+  domain = NULL, start = NULL, end = NULL, pub.start = NULL,
+  pub.end = NULL, n = 100, verbose = FALSE)
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}

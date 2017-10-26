@@ -4,17 +4,16 @@
 \alias{ly_shares}
 \title{Get shares}
 \usage{
-ly_shares(token, start = Sys.Date() - 7, end = Sys.Date(),
-  pub.start = NULL, pub.end = NULL, n = 100, verbose = FALSE)
+ly_shares(token, start = NULL, end = NULL, pub.start = NULL,
+  pub.end = NULL, n = 100, verbose = FALSE)
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}
 
 \item{start}{start of date range to consider traffic from,
-limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.}
+limited to most recent 90 days.}
 
-\item{end}{end of date range to consider traffic from.
-Defaults to \code{Sys.Date()-7}.}
+\item{end}{end of date range to consider traffic from.}
 
 \item{pub.start}{publication filter start date, \code{posts} only.}
 

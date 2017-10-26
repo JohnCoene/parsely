@@ -27,10 +27,10 @@
 #' }
 #'
 #' @export
-ly_referrers <- function(token, referrer.type = "social", section = NULL, tag = NULL,
-                         domain = NULL, start = Sys.Date()-7, end = Sys.Date(),
-                         pub.start = NULL, pub.end = NULL, n = 100,
-                         verbose = FALSE){
+ly_referrers <- function(token, referrer.type = "social", section = NULL,
+                         tag = NULL, domain = NULL, start = NULL,
+                         end = NULL, pub.start = NULL, pub.end = NULL,
+                         n = 100, verbose = FALSE){
 
   # input check
   if(missing(token)) stop("missing token.")
