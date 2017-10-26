@@ -2,7 +2,7 @@
 % Please edit documentation in R/analytics.R
 \name{ly_analytics}
 \alias{ly_analytics}
-\title{Get Anaqlytics}
+\title{Get analytics}
 \usage{
 ly_analytics(token, type = "posts", start = Sys.Date() - 7,
   end = Sys.Date(), pub.start = NULL, pub.end = NULL, section = NULL,
@@ -38,5 +38,17 @@ Defaults to \code{Sys.Date()-7}.}
 \item{verbose}{prints feedback in the console}
 }
 \description{
-Calls Parsely Analytics API
+Returns a list of posts, authors, sections or tags depending on the specified type.
+This is typically used to generate front page or article page widgets featuring
+your "Most Popular" content.
+}
+\examples{
+\dontrun{
+token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+
+posts <- ly_analytics(token)
+gender <- ly_analytics(token, verbose = T, tag = "gender-parity",
+  sort = "mobile_views", n = 1000)
+}
+
 }

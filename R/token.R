@@ -9,6 +9,11 @@
 #' \href{https://dash.parsely.com/agenda.weforum.org/settings/api/}{API Settings}
 #'  page.
 #'
+#' @examples
+#' \dontrun{
+#' token <- ly_token("subdomain.domain.net", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' }
+#'
 #' @export
 ly_token <- function(key, secret){
   if(missing(key) || missing(secret))

@@ -3,6 +3,11 @@ types <- function(){
   return(x)
 }
 
+referrers <- function(){
+  x <- c("social", "search", "other", "internal")
+  return(x)
+}
+
 # loop through pages
 call_api <- function(content, verbose, n){
 
@@ -15,9 +20,10 @@ call_api <- function(content, verbose, n){
     next_page <- httr::GET(content$links$`next`) # call next url
     content <- httr::content(next_page) # extract content
     all <- append(all, content$data) # bind
-    if(verbose == TRUE)
+    if(verbose == TRUE){
       i <- i + 1;
       message("page ", i)
+    }
     Sys.sleep(1)
   }
 

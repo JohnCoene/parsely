@@ -1,6 +1,8 @@
-#' Get Anaqlytics
+#' Get analytics
 #'
-#' Calls Parsely Analytics API
+#' Returns a list of posts, authors, sections or tags depending on the specified type.
+#' This is typically used to generate front page or article page widgets featuring
+#' your "Most Popular" content.
 #'
 #' @param token your token as returned by \code{\link{ly_token}}.
 #' @param type one of \code{posts}, \code{authors}, \code{sections}, \code{tags},
@@ -19,6 +21,15 @@
 #' @param n number of results to return
 #' @param verbose prints feedback in the console
 #'
+#' @examples
+#' \dontrun{
+#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#'
+#' posts <- ly_analytics(token)
+#' gender <- ly_analytics(token, verbose = T, tag = "gender-parity",
+#'   sort = "mobile_views", n = 1000)
+#' }
+#'
 #' @export
 ly_analytics <- function(token, type = "posts", start = Sys.Date()-7,
                          end = Sys.Date(), pub.start = NULL, pub.end = NULL,
@@ -26,6 +37,7 @@ ly_analytics <- function(token, type = "posts", start = Sys.Date()-7,
                          n = 100, verbose = FALSE){
 
   # input check
+  if(missing(token)) stop("missing token.")
   if(!is.null(pub.start) || !is.null(pub.end) && type != "posts")
     stop("pub.start and pub.end are only available for type = posts", call. = FALSE)
   if(!is.null(section) && type != "posts")
@@ -60,6 +72,65 @@ ly_analytics <- function(token, type = "posts", start = Sys.Date()-7,
   content <- httr::content(response)
 
   contents <- call_api(content, verbose, n)
+
+  data <- parse_json(contents)
+
+  return(data)
+
+}
+
+#' Get post analytics details
+#'
+#' Returns the post's metadata, as well as total views and visitors in the
+#' metrics field. By default, this returns the total pageviews on the link
+#' for the last 90 days.
+#'
+#' @param token your token as returned by \code{\link{ly_token}}.
+#' @param url URL of post to fetch details on. This must be in canonical form,
+#' including \code{http://} scheme. see examples
+#' @param start start of date range to consider traffic from,
+#'  limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.
+#' @param end end of date range to consider traffic from.
+#'  Defaults to \code{Sys.Date()-7}.
+#' @param verbose prints feedback in the console
+#'
+#' @examples
+#' \dontrun{
+#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#'
+#' # get all posts
+#' posts <- ly_analytics(token)
+#'
+#' # get details of random post
+#' post_details <- ly_analytics_details(token, url = sample(posts$url, 1))
+#' }
+#'
+#' @export
+ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Date(),
+                                 verbose = FALSE){
+
+  # input check
+  if(missing(token)) stop("missing token.")
+  if(missing(url)) stop("missing url.")
+
+  # Build URL
+  uri <- httr::parse_url(paste0(getOption("parsely_base_url"),
+                                "analytics/post/detail"))
+  uri$query <- list(apikey = token[["key"]],
+                    secret = token[["secret"]],
+                    url = url,
+                    start = start,
+                    end = end)
+  uri <- httr::build_url(uri)
+
+  # call API
+  response <- httr::GET(url = uri)
+
+  if(verbose == TRUE) message("page 1")
+
+  content <- httr::content(response)
+
+  contents <- call_api(content, verbose, n = 100)
 
   data <- parse_json(contents)
 

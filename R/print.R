@@ -1,4 +1,5 @@
 #' @export
-print.parsely <- function(...){
-  print("parsely token", ...)
+print.parsely <- function(x, ...){
+  x <- "parsely token"
+  print(x, ...)
 }

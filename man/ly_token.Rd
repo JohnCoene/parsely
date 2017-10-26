@@ -18,3 +18,9 @@ contain the secret token obtainable from the
 \description{
 Build parse.ly token
 }
+\examples{
+\dontrun{
+token <- ly_token("subdomain.domain.net", "XXxxX00X0X000XxXxXx000X0X0X00X")
+}
+
+}
