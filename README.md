@@ -2,6 +2,8 @@
 
 ![WEF](https://www.parse.ly/static/img/brand/logo-parsely-green-vertical.png)
 
+Easily call [parse.ly](http://parse.ly/) API from R.
+
 # functions
 
 * `ly_token`
@@ -24,4 +26,4 @@ gender_analytics <- ly_analytics(token, type = "posts"", tags = "gender-parity")
 ```
 -------------------------------------
 
-Issue? email: <Jean-Philippe.Coene@weforum.org>
+Maintainer: Jean-Philippe Coene <Jean-Philippe.Coene@weforum.org>
