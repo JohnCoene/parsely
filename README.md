@@ -1,6 +1,6 @@
 # parsely
 
-![WEF](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/World_Economic_Forum_logo.svg/2000px-World_Economic_Forum_logo.svg.png)
+![WEF](https://www.parse.ly/static/img/brand/logo-parsely-green-vertical.png)
 
 # functions
 
