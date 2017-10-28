@@ -23,6 +23,12 @@ gender_posts <- ly_search(token, q = "gender") # search articles by keyword
 
 # get analytics of posts tagged gender-parity
 gender_analytics <- ly_analytics(token, type = "posts"", tags = "gender-parity")
+
+# get details for specific URL
+url <- paste0("https://www.weforum.org/agenda/2017/10/",
+    "space-satellites-digital-connectivity")
+    
+url_data <- ly_analytics_details(token, url = url)
 ```
 -------------------------------------
 
