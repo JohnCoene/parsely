@@ -4,7 +4,16 @@
 
 Easily call [parse.ly](http://parse.ly/) API from R.
 
-# functions
+## Install
+
+This repository is private, you will need access and your credentials.
+
+```R
+devtools::install_git("https://jpwef@git.weforum.local/jpwef/parsely.git",
+    credentials = git2r::cred_user_pass("username", "password"))
+```
+
+## functions
 
 * `ly_token`
 * `ly_search`
