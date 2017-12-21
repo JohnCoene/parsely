@@ -17,8 +17,8 @@
 #' @param tag filter the current top posts by a specific tag, \code{posts} only.
 #' @param sort sort value; defaults to \code{views}. See
 #'  \href{https://www.parse.ly/help/api/available-metrics/}{available metrics}.
-#' @param n number of results to return
-#' @param verbose prints feedback in the console
+#' @param n number of results to return.
+#' @param verbose prints feedback in the console.
 #'
 #' @examples
 #' \dontrun{
@@ -150,6 +150,7 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #' @param pub.start,pub.end publication filter start and end date.
 #' @param period.start start and end of period to consider traffic from.
 #' @param verbose prints feedback in the console.
+#' @param n number of results to return.
 #'
 #' @details
 #' valid meta:
@@ -164,7 +165,7 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' # get 100 authors
-#' authors <- ly_analytics(ly_token, type = "authors", verbose = TRUE)
+#' authors <- ly_analytics(token, type = "authors", verbose = TRUE)
 #'
 #' # get author details
 #' details <- ly_analytics_meta_details(token, "author", value = sample(authors$author, 1))
@@ -172,8 +173,7 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #'
 #' @export
 ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()-7, pub.end = Sys.Date(),
-                                      period.start = NULL, period.end = NULL,
-                                      verbose = FALSE){
+                                      period.start = NULL, period.end = NULL, n = 100, verbose = FALSE){
 
   # input check
   if(missing(token)) stop("missing token.", call. = FALSE)
@@ -192,6 +192,8 @@ ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()
                     period_end = period.end,
                     pub_date_start = pub.start,
                     pub_date_end = pub.end,
+                    limit = 100,
+                    page = 1,
                     sort = "engaged_minutes")
   uri <- httr::build_url(uri)
 
@@ -202,7 +204,7 @@ ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()
 
   content <- httr::content(response)
 
-  contents <- call_api(content, verbose, n = 100)
+  contents <- call_api(content, verbose, n = n)
 
   data <- parse_json(contents)
 

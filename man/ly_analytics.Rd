@@ -32,9 +32,9 @@ limited to most recent 90 days.}
 \item{sort}{sort value; defaults to \code{views}. See
 \href{https://www.parse.ly/help/api/available-metrics/}{available metrics}.}
 
-\item{n}{number of results to return}
+\item{n}{number of results to return.}
 
-\item{verbose}{prints feedback in the console}
+\item{verbose}{prints feedback in the console.}
 }
 \description{
 Returns a list of posts, authors, sections or tags depending on the specified type.

@@ -5,7 +5,7 @@
 \title{Get meta analytics details}
 \usage{
 ly_analytics_meta_details(token, meta, value, pub.start = Sys.Date() - 7,
-  pub.end = Sys.Date(), period.start = NULL, period.end = NULL,
+  pub.end = Sys.Date(), period.start = NULL, period.end = NULL, n = 100,
   verbose = FALSE)
 }
 \arguments{
@@ -18,6 +18,8 @@ ly_analytics_meta_details(token, meta, value, pub.start = Sys.Date() - 7,
 \item{pub.start, pub.end}{publication filter start and end date.}
 
 \item{period.start}{start and end of period to consider traffic from.}
+
+\item{n}{number of results to return.}
 
 \item{verbose}{prints feedback in the console.}
 
