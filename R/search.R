@@ -37,9 +37,9 @@ ly_search <- function(token, q = NULL, section = NULL, tag = NULL, author = NULL
                          verbose = FALSE){
 
   # input check
-  if(missing(token)) stop("missing token.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
   if(!is.null(boost) && sort != "score")
-    stop("boost only valid if sort = score.")
+    stop("boost only valid if sort = score.", call. = FALSE)
 
   # Build URL
   uri <- httr::parse_url(paste0(getOption("parsely_base_url"), "search"))

@@ -19,7 +19,7 @@ limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.}
 \item{end}{end of date range to consider traffic from.
 Defaults to \code{Sys.Date()-7}.}
 
-\item{verbose}{prints feedback in the console}
+\item{verbose}{prints feedback in the console.}
 }
 \description{
 Returns the post's metadata, as well as total views and visitors in the

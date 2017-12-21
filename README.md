@@ -19,6 +19,7 @@ devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/parsely.git",
 * `ly_search`
 * `ly_analytics`
 * `ly_analytics_details`
+* `ly_analytics_meta_details`
 * `ly_shares`
 * `ly_shares_details`
 * `ly_referrers`

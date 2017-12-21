@@ -38,3 +38,7 @@ parse_json <- function(x){
   })
   plyr::ldply(lst, data.frame)
 }
+
+valid_metas <- function(){
+  c("author", "section", "tag")
+}

@@ -33,7 +33,7 @@ ly_referrers <- function(token, referrer.type = "social", section = NULL,
                          n = 100, verbose = FALSE){
 
   # input check
-  if(missing(token)) stop("missing token.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
   if(!referrer.type %in% referrers())
     stop("Invalid referrer.type", call. = FALSE)
 

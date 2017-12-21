@@ -3,6 +3,7 @@
 S3method(print,parsely)
 export(ly_analytics)
 export(ly_analytics_details)
+export(ly_analytics_meta_details)
 export(ly_referrers)
 export(ly_search)
 export(ly_shares)

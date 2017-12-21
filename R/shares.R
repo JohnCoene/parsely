@@ -24,7 +24,7 @@ ly_shares <- function(token, start = NULL, end = NULL,
                       pub.start = NULL, pub.end = NULL, n = 100,
                       verbose = FALSE){
 
-  if(missing(token)) stop("missing token.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
 
   # Build URL
   uri <- httr::parse_url(paste0(getOption("parsely_base_url"), "shares/posts"))
@@ -77,7 +77,7 @@ ly_shares <- function(token, start = NULL, end = NULL,
 #' @export
 ly_shares_details <- function(token, url, verbose = FALSE){
 
-  if(missing(token)) stop("missing token.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
 
   # Build URL
   uri <- httr::parse_url(paste0(getOption("parsely_base_url"), "shares/post/detail"))

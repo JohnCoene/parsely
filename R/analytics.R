@@ -36,7 +36,7 @@ ly_analytics <- function(token, type = "posts", start = NULL,
                          n = 100, verbose = FALSE){
 
   # input check
-  if(missing(token)) stop("missing token.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
   if(!is.null(pub.start) || !is.null(pub.end) && type != "posts")
     stop("pub.start and pub.end are only available for type = posts", call. = FALSE)
   if(!is.null(section) && type != "posts")
@@ -92,7 +92,7 @@ ly_analytics <- function(token, type = "posts", start = NULL,
 #'  limited to most recent 90 days. Defaults to \code{Sys.Date()-7}.
 #' @param end end of date range to consider traffic from.
 #'  Defaults to \code{Sys.Date()-7}.
-#' @param verbose prints feedback in the console
+#' @param verbose prints feedback in the console.
 #'
 #' @examples
 #' \dontrun{
@@ -110,8 +110,8 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
                                  verbose = FALSE){
 
   # input check
-  if(missing(token)) stop("missing token.")
-  if(missing(url)) stop("missing url.")
+  if(missing(token)) stop("missing token.", call. = FALSE)
+  if(missing(url)) stop("missing url.", call. = FALSE)
 
   # Build URL
   uri <- httr::parse_url(paste0(getOption("parsely_base_url"),
@@ -121,6 +121,77 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
                     url = url,
                     start = start,
                     end = end,
+                    sort = "engaged_minutes")
+  uri <- httr::build_url(uri)
+
+  # call API
+  response <- httr::GET(url = uri)
+
+  if(verbose == TRUE) message("page 1")
+
+  content <- httr::content(response)
+
+  contents <- call_api(content, verbose, n = 100)
+
+  data <- parse_json(contents)
+
+  return(data)
+
+}
+
+#' Get meta analytics details
+#'
+#' Get detailed analytics on a meta object.
+#'
+#' @param token your token as returned by \code{\link{ly_token}}.
+#' @param meta type of \code{value}, see details.
+#' @param value value of \code{meta} to fetch detaisl of.
+#' @param pub.start,pub.end publication filter start and end date.
+#' @param pub.start,pub.end publication filter start and end date.
+#' @param period.start start and end of period to consider traffic from.
+#' @param verbose prints feedback in the console.
+#'
+#' @details
+#' valid meta:
+#' \itemize{
+#'   \item{\code{author}}
+#'   \item{\code{section}}
+#'   \item{\code{tag}}
+#' }
+#'
+#' @examples
+#' \dontrun{
+#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#'
+#' # get 100 authors
+#' authors <- ly_analytics(ly_token, type = "authors", verbose = TRUE)
+#'
+#' # get author details
+#' details <- ly_analytics_meta_details(token, "author", value = sample(authors$author, 1))
+#' }
+#'
+#' @export
+ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()-7, pub.end = Sys.Date(),
+                                      period.start = NULL, period.end = NULL,
+                                      verbose = FALSE){
+
+  # input check
+  if(missing(token)) stop("missing token.", call. = FALSE)
+  if(missing(meta)) stop("missing meta", call. = FALSE)
+  if(missing(value)) stop("missing value", call. = FALSE)
+
+  if(!meta %in% valid_metas())
+    stop("invalid meta, see details.", call. = FALSE)
+
+  # Build URL
+  uri <- httr::parse_url(paste0(getOption("parsely_base_url"),
+                                "analytics/", meta, "/", URLencode(as.character(value)) ,"/detail"))
+  uri$query <- list(apikey = token[["key"]],
+                    secret = token[["secret"]],
+                    period_start = period.start,
+                    period_end = period.end,
+                    pub_date_start = pub.start,
+                    pub_date_end = pub.end,
                     sort = "engaged_minutes")
   uri <- httr::build_url(uri)
 
