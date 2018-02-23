@@ -37,8 +37,6 @@ ly_analytics <- function(token, type = "posts", start = NULL,
 
   # input check
   if(missing(token)) stop("missing token.", call. = FALSE)
-  if(!is.null(pub.start) || !is.null(pub.end) && type != "posts")
-    stop("pub.start and pub.end are only available for type = posts", call. = FALSE)
   if(!is.null(section) && type != "posts")
     stop("section is only available for type = posts", call. = FALSE)
   if(!is.null(author) && type != "posts")
