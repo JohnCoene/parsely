@@ -145,10 +145,10 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #' @param meta type of \code{value}, see details.
 #' @param value value of \code{meta} to fetch detaisl of.
 #' @param pub.start,pub.end publication filter start and end date.
-#' @param pub.start,pub.end publication filter start and end date.
-#' @param period.start start and end of period to consider traffic from.
+#' @param period.start,period.end start and end of period to consider traffic from.
 #' @param verbose prints feedback in the console.
 #' @param n number of results to return.
+#' @param sort sort value; defaults to \code{engaged_minutes}. See
 #'
 #' @details
 #' valid meta:
@@ -157,6 +157,8 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #'   \item{\code{section}}
 #'   \item{\code{tag}}
 #' }
+#'
+#' @importFrom utils URLencode
 #'
 #' @examples
 #' \dontrun{
@@ -171,7 +173,8 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #'
 #' @export
 ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()-7, pub.end = Sys.Date(),
-                                      period.start = NULL, period.end = NULL, n = 100, verbose = FALSE){
+                                      period.start = NULL, period.end = NULL, n = 100, verbose = FALSE,
+                                      sort = "engaged_minutes"){
 
   # input check
   if(missing(token)) stop("missing token.", call. = FALSE)
@@ -192,7 +195,7 @@ ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()
                     pub_date_end = pub.end,
                     limit = 100,
                     page = 1,
-                    sort = "engaged_minutes")
+                    sort = sort)
   uri <- httr::build_url(uri)
 
   # call API

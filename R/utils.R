@@ -1,11 +1,9 @@
 types <- function(){
-  x <- c("posts", "authors", "sections", "tags", "referrers")
-  return(x)
+  c("posts", "authors", "sections", "tags", "referrers")
 }
 
 referrers <- function(){
-  x <- c("social", "search", "other", "internal")
-  return(x)
+  c("social", "search", "other", "internal")
 }
 
 # loop through pages

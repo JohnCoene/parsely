@@ -6,7 +6,7 @@
 \usage{
 ly_analytics_meta_details(token, meta, value, pub.start = Sys.Date() - 7,
   pub.end = Sys.Date(), period.start = NULL, period.end = NULL, n = 100,
-  verbose = FALSE)
+  verbose = FALSE, sort = "engaged_minutes")
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}
@@ -17,13 +17,13 @@ ly_analytics_meta_details(token, meta, value, pub.start = Sys.Date() - 7,
 
 \item{pub.start, pub.end}{publication filter start and end date.}
 
-\item{period.start}{start and end of period to consider traffic from.}
+\item{period.start, period.end}{start and end of period to consider traffic from.}
 
 \item{n}{number of results to return.}
 
 \item{verbose}{prints feedback in the console.}
 
-\item{pub.start, pub.end}{publication filter start and end date.}
+\item{sort}{sort value; defaults to \code{engaged_minutes}. See}
 }
 \description{
 Get detailed analytics on a meta object.
@@ -41,7 +41,7 @@ valid meta:
 token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 # get 100 authors
-authors <- ly_analytics(ly_token, type = "authors", verbose = TRUE)
+authors <- ly_analytics(token, type = "authors", verbose = TRUE)
 
 # get author details
 details <- ly_analytics_meta_details(token, "author", value = sample(authors$author, 1))
