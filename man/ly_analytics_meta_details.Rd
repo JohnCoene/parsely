@@ -4,8 +4,8 @@
 \alias{ly_analytics_meta_details}
 \title{Get meta analytics details}
 \usage{
-ly_analytics_meta_details(token, meta, value, pub.start = Sys.Date() - 7,
-  pub.end = Sys.Date(), period.start = NULL, period.end = NULL, n = 100,
+ly_analytics_meta_details(token, meta, value, pub.start = NULL,
+  pub.end = NULL, period.start = NULL, period.end = NULL, n = 100,
   verbose = FALSE, sort = "engaged_minutes")
 }
 \arguments{

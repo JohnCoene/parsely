@@ -4,7 +4,7 @@
 \alias{ly_analytics_details}
 \title{Get post analytics details}
 \usage{
-ly_analytics_details(token, url, start = Sys.Date() - 7, end = Sys.Date(),
+ly_analytics_details(token, url, start = NULL, end = NULL,
   verbose = FALSE)
 }
 \arguments{

@@ -104,7 +104,7 @@ ly_analytics <- function(token, type = "posts", start = NULL,
 #' }
 #'
 #' @export
-ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Date(),
+ly_analytics_details <- function(token, url, start = NULL, end = NULL,
                                  verbose = FALSE){
 
   # input check
@@ -172,7 +172,7 @@ ly_analytics_details <- function(token, url, start = Sys.Date()-7, end = Sys.Dat
 #' }
 #'
 #' @export
-ly_analytics_meta_details <- function(token, meta, value, pub.start = Sys.Date()-7, pub.end = Sys.Date(),
+ly_analytics_meta_details <- function(token, meta, value, pub.start = NULL, pub.end = NULL,
                                       period.start = NULL, period.end = NULL, n = 100, verbose = FALSE,
                                       sort = "engaged_minutes"){
 
