@@ -43,7 +43,7 @@ overall number, or a number restricted to a specific domain.
 token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 refs <- ly_referrers(token)
-gender <- ly_referrers(token, referrer.type = "search", tag = "gender-parity")
+rstats <- ly_referrers(token, referrer.type = "search", tag = "rlang")
 }
 
 }

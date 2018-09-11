@@ -1,3 +1,5 @@
+[![Travis build status](https://travis-ci.org/JohnCoene/parsely.svg?branch=master)](https://travis-ci.org/JohnCoene/parsely)
+
 # parsely
 
 ![WEF](https://www.parse.ly/static/img/brand/logo-parsely-green-vertical.png)
@@ -26,10 +28,10 @@ devtools::install_github("JohnCoene/parsely")
 ```R
 token <- ly_token("subdomain.domain.net", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
-gender_posts <- ly_search(token, q = "gender") # search articles by keyword
+rstats_posts <- ly_search(token, q = "r-tag") # search articles by keyword
 
-# get analytics of posts tagged gender-parity
-gender_analytics <- ly_analytics(token, type = "posts", tags = "r-tag")
+# get analytics of posts tagged r-tag
+rstats_analytics <- ly_analytics(token, type = "posts", tags = "r-tag")
 
 # get details for specific URL
 url <- "https://www.r-project.org/"

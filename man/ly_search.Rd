@@ -48,7 +48,7 @@ Search for Posts by keyword or query. These can match against full content.
 \dontrun{
 token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
-results <- ly_search(token, q = "gender")
+results <- ly_search(token, q = "ggplot2-topic")
 }
 
 }

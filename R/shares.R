@@ -15,8 +15,7 @@
 #' \dontrun{
 #' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
-#' shares <- ly_shares(token)
-#' gender <- ly_shares(token, n = 1000, verbose = TRUE)
+#' shares <- ly_shares(token, n = 1000, verbose = TRUE)
 #' }
 #'
 #' @export
@@ -71,7 +70,7 @@ ly_shares <- function(token, start = NULL, end = NULL,
 #' shares <- ly_shares(token)
 #'
 #' # get details on random shares
-#' gender <- ly_shares_details(token, url = sample(shares$url, 1))
+#' details <- ly_shares_details(token, url = sample(shares$url, 1))
 #' }
 #'
 #' @export

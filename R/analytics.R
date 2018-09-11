@@ -25,7 +25,7 @@
 #' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' posts <- ly_analytics(token)
-#' gender <- ly_analytics(token, verbose = T, tag = "ggplot2",
+#' gg <- ly_analytics(token, verbose = T, tag = "ggplot2",
 #'   sort = "engaged_minutes", n = 1000)
 #' }
 #'

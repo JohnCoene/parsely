@@ -30,8 +30,7 @@ Calls Parsely Analytics API
 \dontrun{
 token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
-shares <- ly_shares(token)
-gender <- ly_shares(token, n = 1000, verbose = TRUE)
+shares <- ly_shares(token, n = 1000, verbose = TRUE)
 }
 
 }
