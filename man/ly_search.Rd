@@ -4,9 +4,9 @@
 \alias{ly_search}
 \title{Search}
 \usage{
-ly_search(token, q = NULL, section = NULL, tag = NULL, author = NULL,
-  boost = NULL, sort = NULL, exclude = NULL, pub.start = NULL,
-  pub.end = NULL, n = 100, verbose = FALSE)
+ly_search(token, q = NULL, section = NULL, tag = NULL,
+  author = NULL, boost = NULL, sort = NULL, exclude = NULL,
+  pub.start = NULL, pub.end = NULL, n = 100, verbose = FALSE)
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}
@@ -46,7 +46,7 @@ Search for Posts by keyword or query. These can match against full content.
 }
 \examples{
 \dontrun{
-token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 results <- ly_search(token, q = "gender")
 }

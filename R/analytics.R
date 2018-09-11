@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' posts <- ly_analytics(token)
 #' gender <- ly_analytics(token, verbose = T, tag = "gender-parity",
@@ -50,8 +50,8 @@ ly_analytics <- function(token, type = "posts", start = NULL,
   uri <- httr::parse_url(paste0(getOption("parsely_base_url"), "analytics/", type))
   uri$query <- list(apikey = token[["key"]],
                     secret = token[["secret"]],
-                    start = start,
-                    end = end,
+                    period_start = start,
+                    period_end = end,
                     pub_date_start = pub.start,
                     pub_date_end = pub.end,
                     section = section,
@@ -94,7 +94,7 @@ ly_analytics <- function(token, type = "posts", start = NULL,
 #'
 #' @examples
 #' \dontrun{
-#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' # get all posts
 #' posts <- ly_analytics(token)
@@ -117,8 +117,8 @@ ly_analytics_details <- function(token, url, start = NULL, end = NULL,
   uri$query <- list(apikey = token[["key"]],
                     secret = token[["secret"]],
                     url = url,
-                    start = start,
-                    end = end,
+                    period_start = start,
+                    period_end = end,
                     sort = "engaged_minutes")
   uri <- httr::build_url(uri)
 
@@ -162,7 +162,7 @@ ly_analytics_details <- function(token, url, start = NULL, end = NULL,
 #'
 #' @examples
 #' \dontrun{
-#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' # get 100 authors
 #' authors <- ly_analytics(token, type = "authors", verbose = TRUE)

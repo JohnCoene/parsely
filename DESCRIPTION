@@ -1,15 +1,13 @@
 Package: parsely
 Type: Package
-Title: Integrates parse.ly API
+Title: Integrates 'parse.ly' API
 Version: 0.1.0
-Authors@R: person("Jean-Philippe", "Coene", email = "Jean-Philippe.Coene@weforum.org",
-                  role = c("aut", "cre"))
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Integrates parse.ly API.
+Authors@R: person("John", "Coene", email = "jcoenep@gmail.com", role = c("aut", "cre"))
+Description: Integrates 'parse.ly' API.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
     httr,
     plyr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

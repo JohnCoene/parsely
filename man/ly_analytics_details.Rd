@@ -28,7 +28,7 @@ for the last 90 days.
 }
 \examples{
 \dontrun{
-token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 # get all posts
 posts <- ly_analytics(token)

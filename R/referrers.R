@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' refs <- ly_referrers(token)
 #' gender <- ly_referrers(token, referrer.type = "search", tag = "gender-parity")
@@ -45,8 +45,8 @@ ly_referrers <- function(token, referrer.type = "social", section = NULL,
                     tag = tag,
                     section = section,
                     domain = domain,
-                    start = start,
-                    end = end,
+                    period_start = start,
+                    period_end = end,
                     pub_date_start = pub.start,
                     pub_date_end = pub.end,
                     limit = 100,

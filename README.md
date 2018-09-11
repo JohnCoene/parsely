@@ -6,11 +6,8 @@ Easily call [parse.ly](http://parse.ly/) API from R.
 
 ## Install
 
-This repository is private, you will need access and your credentials.
-
 ```R
-devtools::install_git("http://chlxintgitl01.weforum.local/JCOE/parsely.git",
-    credentials = git2r::cred_user_pass("username", "password"))
+devtools::install_github("JohnCoene/parsely")
 ```
 
 ## functions
@@ -35,11 +32,8 @@ gender_posts <- ly_search(token, q = "gender") # search articles by keyword
 gender_analytics <- ly_analytics(token, type = "posts", tags = "gender-parity")
 
 # get details for specific URL
-url <- paste0("https://www.weforum.org/agenda/2017/10/",
-    "space-satellites-digital-connectivity")
+url <- "https://www.r-project.org/"
     
 url_data <- ly_analytics_details(token, url = url)
 ```
--------------------------------------
 
-Maintainer: Jean-Philippe Coene <Jean-Philippe.Coene@weforum.org>

@@ -5,9 +5,7 @@
 #' @param key the API key specified in your Parse.ly JavaScript
 #' tracker; Required for all requests.
 #' @param secret this parameter is required for every request and should
-#' contain the secret token obtainable from the
-#' \href{https://dash.parsely.com/agenda.weforum.org/settings/api/}{API Settings}
-#'  page.
+#' contain the secret token obtainable from the dashboard.
 #'
 #' @examples
 #' \dontrun{

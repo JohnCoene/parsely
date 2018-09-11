@@ -25,7 +25,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 #'
 #' results <- ly_search(token, q = "gender")
 #' }

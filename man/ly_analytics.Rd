@@ -43,7 +43,7 @@ your "Most Popular" content.
 }
 \examples{
 \dontrun{
-token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 posts <- ly_analytics(token)
 gender <- ly_analytics(token, verbose = T, tag = "gender-parity",

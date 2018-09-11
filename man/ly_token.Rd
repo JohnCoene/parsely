@@ -11,9 +11,7 @@ ly_token(key, secret)
 tracker; Required for all requests.}
 
 \item{secret}{this parameter is required for every request and should
-contain the secret token obtainable from the
-\href{https://dash.parsely.com/agenda.weforum.org/settings/api/}{API Settings}
- page.}
+contain the secret token obtainable from the dashboard.}
 }
 \description{
 Build parse.ly token

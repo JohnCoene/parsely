@@ -4,9 +4,9 @@
 \alias{ly_referrers}
 \title{Get referrers}
 \usage{
-ly_referrers(token, referrer.type = "social", section = NULL, tag = NULL,
-  domain = NULL, start = NULL, end = NULL, pub.start = NULL,
-  pub.end = NULL, n = 100, verbose = FALSE)
+ly_referrers(token, referrer.type = "social", section = NULL,
+  tag = NULL, domain = NULL, start = NULL, end = NULL,
+  pub.start = NULL, pub.end = NULL, n = 100, verbose = FALSE)
 }
 \arguments{
 \item{token}{your token as returned by \code{\link{ly_token}}.}
@@ -40,7 +40,7 @@ overall number, or a number restricted to a specific domain.
 }
 \examples{
 \dontrun{
-token <- ly_token("agenda.weforum.org", "XXxxX00X0X000XxXxXx000X0X0X00X")
+token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
 
 refs <- ly_referrers(token)
 gender <- ly_referrers(token, referrer.type = "search", tag = "gender-parity")
