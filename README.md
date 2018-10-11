@@ -21,7 +21,11 @@ devtools::install_github("JohnCoene/parsely")
 * `ly_analytics_meta_details`
 * `ly_shares`
 * `ly_shares_details`
+* `ly_shares_details_meta`
 * `ly_referrers`
+* `ly_referrers_post`
+* `ly_referrers_details`
+* `ly_referrers_details_meta`
 
 ## Example
 

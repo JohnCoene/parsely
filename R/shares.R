@@ -99,3 +99,55 @@ ly_shares_details <- function(token, url, verbose = FALSE){
   return(data)
 
 }
+
+#' Get post shares meta detail
+#'
+#' For a given canonical URL, return the total share counts across the top social networks. 
+#' The following table shows what each integer value returned in the response contains.
+#'
+#' @param token your token as returned by \code{\link{ly_token}}.
+#' @param meta one of \code{author}, \code{section}, \code{tag}.
+#' @param value value of \code{meta}.
+#' @param pub.start publication filter start date, \code{posts} only.
+#' @param pub.end publication filter end date, \code{posts} only.
+#' @param n number of results to return
+#' @param verbose prints feedback in the console.
+#'
+#' @examples
+#' \dontrun{
+#' token <- ly_token("my.domain.com", "XXxxX00X0X000XxXxXx000X0X0X00X")
+#'
+#' # get details on random shares
+#' details <- ly_shares_details_meta(token, meta = "author", value = "John Doe")
+#' }
+#'
+#' @export
+ly_shares_details_meta <- function(token, meta = "author", value, pub.start = NULL, 
+                                   pub.end = NULL, n = 100, verbose = FALSE){
+  
+  if(missing(token)) stop("missing token.", call. = FALSE)
+  if(missing(value)) stop("missing value.", call. = FALSE)
+  
+  # Build URL
+  uri <- httr::parse_url(paste0(getOption("parsely_base_url"), "shares/", meta, "/", URLencode(value), "/detail"))
+  uri$query <- list(apikey = token[["key"]],
+                    secret = token[["secret"]],
+                    pub_date_start = pub.start,
+                    pub_date_end = pub.end,
+                    limit = 100)
+  uri <- httr::build_url(uri)
+  
+  # call API
+  response <- httr::GET(url = uri)
+  
+  if(verbose == TRUE) message("page 1")
+  
+  content <- httr::content(response)
+  
+  contents <- call_api(content, verbose, n = 100)
+  
+  data <- parse_json(contents)
+  
+  return(data)
+  
+}
